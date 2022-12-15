@@ -2,8 +2,8 @@ package com.apiregions.apiregions;
 
 import com.apiregions.apiregions.Configuration.JwtAuthentificationFilter;
 import com.apiregions.apiregions.Configuration.JwtAuthorizationFilter;
-import com.apiregions.apiregions.Models.UsersApp;
 import com.apiregions.apiregions.Sevices.AccountServices;
+import com.apiregions.apiregions.Sevices.UserDetailServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,16 +12,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 @Configuration
 @EnableWebSecurity
@@ -29,29 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private AccountServices accountServices;
 //ICI MON INJECTION DE DEPENDANCES
-    public SecurityConfig(AccountServices accountServices) {
-        this.accountServices = accountServices;
+  private UserDetailServiceImpl userDetailService;
+
+    public SecurityConfig(UserDetailServiceImpl userDetailService) {
+        this.userDetailService = userDetailService;
     }
 
     @Override
     protected  void configure(AuthenticationManagerBuilder Auth) throws Exception{
-        Auth.userDetailsService(new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-               UsersApp usersApp = accountServices.loadUsersByUsername(username); // ICI ON RECUPERRE UN UTILISATEUR
-                //ICI ON CREE UNE COLLECTION DE ROLE
-                Collection<GrantedAuthority> Authotities = new ArrayList<>();
-                // NOUS ALLONS AJOUTER LES ROLES TROUVES
-
-                usersApp.getUserRoles().forEach(R -> {
-                   Authotities.add( new SimpleGrantedAuthority(R.getRoleName()));
-                });
-
-
-               //ICI ON RETOURNE NOTRE UTILISATEUR
-                return new User(usersApp.getUsername(),usersApp.getPassword(),Authotities);
-            }
-        });
+    Auth.userDetailsService(userDetailService);
     }
 
     @Override
