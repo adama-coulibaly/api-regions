@@ -26,6 +26,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class AccountRestController {
     private AccountServices accountServices;
 // CETTE CONSTRUCTEUR NOUS PERMET DE FAIRE L'INJECTION DE DEPENDANCE

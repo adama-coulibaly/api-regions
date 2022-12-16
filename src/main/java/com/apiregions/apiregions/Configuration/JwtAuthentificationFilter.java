@@ -64,8 +64,12 @@ public class JwtAuthentificationFilter extends UsernamePasswordAuthenticationFil
                .sign(algorithm); // SIGNATURE
 
         Map<String,String> IdToken = new HashMap<>();
-        IdToken.put("Access-Token",JwtAccessToken);
+
+
+        IdToken.put("Access-Token",JwtAccessToken);IdToken.put("Utilisateurs",user.getAuthorities().toString());
+        IdToken.put("Username",user.getUsername().toString());
         IdToken.put("Refresh-Token",RefreshtAccessToken);
+
 
         response.setContentType("application/json");
         new ObjectMapper().writeValue(response.getOutputStream(),IdToken);

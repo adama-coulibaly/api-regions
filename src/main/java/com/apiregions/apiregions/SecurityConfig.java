@@ -37,6 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.authorizeHttpRequests()
                 .antMatchers("/refreshToken/**").permitAll()
+                .antMatchers("/login/**").permitAll()
                 .antMatchers("/projet/odk/Regions/**").permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.formLogin();

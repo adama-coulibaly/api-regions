@@ -6,6 +6,8 @@ import com.apiregions.apiregions.Models.Regions;
 import com.apiregions.apiregions.Repository.RegionsRepository;
 import com.apiregions.apiregions.Sevices.RegionsService;
 import com.apiregions.apiregions.img.ConfigImage;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/projet/odk/Regions", name = "Regions")
 public class RegionsControler {
 
@@ -41,14 +44,7 @@ public class RegionsControler {
     }
 
    // ICI ON TENTE DE CREER UNE REGION AVEC IMAGES
-   private String nomregions;
-    @Column(unique = true)
-    private String coderegion;
-    private String activiterregion;
-    private String superficieregion;
-    private String languemregion;
-    private String images;
-    private String description;
+
     private int nombrecommentaire;
     @Autowired
     private RegionsRepository regionsRepository;
@@ -103,6 +99,7 @@ public class RegionsControler {
         }
 
     }
+
 
 
 
