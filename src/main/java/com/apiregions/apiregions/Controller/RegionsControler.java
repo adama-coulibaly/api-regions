@@ -98,7 +98,8 @@ public class RegionsControler {
             //  entiteServiceImplement.ajouter(entite);
             return regionsService.ajouterRegions(regions);
         }else {
-            return null;
+            ReponseMessage message = new ReponseMessage("Regions existe déja",false);
+            return message;
         }
 
     }
