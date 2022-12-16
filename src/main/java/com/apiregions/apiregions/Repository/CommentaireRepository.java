@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CommentaireRepository extends JpaRepository<Commentaire,Long> {
 
-    Commentaire findByObjet(String objets);
+    Commentaire findByObjet(Commentaire objets);
 }

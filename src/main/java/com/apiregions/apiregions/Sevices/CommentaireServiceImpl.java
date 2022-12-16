@@ -1,22 +1,31 @@
 package com.apiregions.apiregions.Sevices;
 
 import com.apiregions.apiregions.Models.Commentaire;
+import com.apiregions.apiregions.Repository.CommentaireRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CommentaireServiceImpl implements CommentaireService {
 
+    @Autowired
+  CommentaireRepository commentaireRepository;
 
-    private CommentaireService commentaireService;
-    // INJECTION DE DEPENDANCE ICI
-    public CommentaireServiceImpl(CommentaireService commentaireService) {
-        this.commentaireService = commentaireService;
+    public CommentaireServiceImpl(CommentaireRepository commentaireRepository) {
+        this.commentaireRepository = commentaireRepository;
     }
 
 
     @Override
     public String addNewCommentaire(Commentaire commentaire) {
-        return null;
+
+        System.out.println("test **************************************** "+commentaire);
+
+            commentaireRepository.save(commentaire);
+            return "Commentaires ajouté avec succes";
+
     }
 
     @Override
@@ -31,6 +40,6 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     @Override
     public List<Commentaire> toutLesCommentaires() {
-        return commentaireService.toutLesCommentaires();
+        return commentaireRepository.findAll();
     }
 }

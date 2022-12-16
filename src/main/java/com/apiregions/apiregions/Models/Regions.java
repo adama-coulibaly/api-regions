@@ -17,7 +17,7 @@ import java.util.List;
 public class Regions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonIgnore
+
     private Long id_regions;
     private String nomregions;
     @Column(unique = true)
@@ -34,8 +34,7 @@ public class Regions {
     @ManyToOne
     private Pays pays;
 
-    @OneToMany
-    private List<Commentaire> commentaires;
+
 
 
 }

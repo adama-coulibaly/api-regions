@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,6 +25,11 @@ public class UsersApp {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     Collection<UserRoles> userRoles = new ArrayList<>();
+
+
 }
