@@ -35,10 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();  // ICI ON DESCTIVE LES SECURITES CSRF
         http.headers().frameOptions().disable();
-        http.authorizeHttpRequests().antMatchers("/refreshToken/**").permitAll();
+        http.authorizeHttpRequests()
+                .antMatchers("/refreshToken/**").permitAll()
+                .antMatchers("/projet/odk/Regions/**").permitAll();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.formLogin();
-        http.authorizeHttpRequests().anyRequest().authenticated();  // ICI ON GERE TOUTE LES PERMISSIONS
+        http.authorizeHttpRequests().anyRequest().permitAll();  // ICI ON GERE TOUTE LES PERMISSIONS
        // ICI ON AJOUTE NOTRE FILTRE
         http.addFilter(new JwtAuthentificationFilter(authenticationManagerBean()));
 

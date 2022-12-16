@@ -121,8 +121,6 @@ public class AccountRestController {
 }
 
 
-
-
 // CETTE CLASSE NOUS SERT LORS LA CREATION OU ATTRIBUTION DE ROLE A UN UTILISATEURS
 @Data
 class AddRoleForm{

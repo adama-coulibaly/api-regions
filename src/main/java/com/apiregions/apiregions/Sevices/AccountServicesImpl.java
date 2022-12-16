@@ -1,7 +1,9 @@
 package com.apiregions.apiregions.Sevices;
 
+import com.apiregions.apiregions.Models.Pays;
 import com.apiregions.apiregions.Models.UserRoles;
 import com.apiregions.apiregions.Models.UsersApp;
+import com.apiregions.apiregions.Repository.PaysRepository;
 import com.apiregions.apiregions.Repository.RoleRepository;
 import com.apiregions.apiregions.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,8 @@ public class AccountServicesImpl implements AccountServices {
     private RoleRepository roleRepository;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    private PaysRepository paysRepository;
 
     @Override
     public String addNewUsers(UsersApp usersApp) {
@@ -85,4 +89,6 @@ public class AccountServicesImpl implements AccountServices {
     public List<UsersApp> listerUsers() {
         return userRepository.findAll();
     }
+
+
 }

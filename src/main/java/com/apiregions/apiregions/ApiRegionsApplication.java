@@ -2,6 +2,7 @@ package com.apiregions.apiregions;
 
 import com.apiregions.apiregions.Models.UserRoles;
 import com.apiregions.apiregions.Models.UsersApp;
+import com.apiregions.apiregions.Repository.PaysRepository;
 import com.apiregions.apiregions.Sevices.AccountServices;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -26,7 +27,7 @@ public class ApiRegionsApplication {
 		return  new BCryptPasswordEncoder();
 	}
 	@Bean
-	CommandLineRunner Start(AccountServices accountServices){
+	CommandLineRunner Start(AccountServices accountServices, PaysRepository paysRepository){
 	return args -> {
 		// ICI MES ROLES
 		accountServices.addNewRoles(new UserRoles(null,"ADMIN"));
@@ -40,6 +41,8 @@ public class ApiRegionsApplication {
 
 		accountServices.addRoleToUser("adama","ADMIN");
 		accountServices.addRoleToUser("awa","USER");
+
+
 	};
 	}
 
