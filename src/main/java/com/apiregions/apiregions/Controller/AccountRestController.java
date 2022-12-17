@@ -25,8 +25,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class AccountRestController {
     private AccountServices accountServices;
 // CETTE CONSTRUCTEUR NOUS PERMET DE FAIRE L'INJECTION DE DEPENDANCE
@@ -35,6 +36,8 @@ public class AccountRestController {
     }
 
     // ICI ON LISTE TOUT LES UTILISATEURS
+
+
 
 
     @GetMapping(path = "/utilisateurs")
@@ -120,6 +123,10 @@ public class AccountRestController {
     return accountServices.loadUsersByUsername(principal.getName());
     }
 }
+
+
+
+
 
 
 // CETTE CLASSE NOUS SERT LORS LA CREATION OU ATTRIBUTION DE ROLE A UN UTILISATEURS

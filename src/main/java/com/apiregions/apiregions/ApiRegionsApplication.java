@@ -34,8 +34,8 @@ public class ApiRegionsApplication {
 		accountServices.addNewRoles(new UserRoles(null,"USER"));
 
 		//ICI MES UTILISATEURS
-		accountServices.addNewUsers(new UsersApp(null,"adama","adama@gmail.com","1234",new ArrayList<>()));
-		accountServices.addNewUsers(new UsersApp(null,"awa","awa@gmail.com","1234",new ArrayList<>()));
+		accountServices.addNewUsers(new UsersApp(null,"adama","adama@gmail.com","123456",new ArrayList<>()));
+		accountServices.addNewUsers(new UsersApp(null,"awa","awa@gmail.com","123456",new ArrayList<>()));
 
 		// ICI ATRIBUTION DE ROLE A UN UTILISATEURS
 

@@ -19,8 +19,8 @@ import javax.persistence.Column;
 import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/projet/odk/Regions", name = "Regions")
 public class RegionsControler {
 

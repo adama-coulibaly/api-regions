@@ -9,6 +9,7 @@
 		<relativePath/>  lookup parent from repository
 	</parent>
 		-->
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -35,6 +36,14 @@
 			<artifactId>java-jwt</artifactId>
 			<version>4.2.1</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.soulwing.jwt/jwt-util -->
+		<dependency>
+			<groupId>org.soulwing.jwt</groupId>
+			<artifactId>jwt-util</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
 
 
 		<dependency>
